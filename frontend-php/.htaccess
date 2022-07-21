@@ -1,0 +1,39 @@
+# poop im inconsistent with some urls lol
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+		Options +FollowSymLinks -Indexes -MultiViews
+	</IfModule>
+	
+	ErrorDocument 403 /error.php
+	ErrorDocument 404 /error.php
+	ErrorDocument 500 /error.php
+	
+	RewriteRule ^api/([^/]*)/?$ /_inc/_api.php?uri=$1 [L]
+	RewriteRule ^cdn/([^/]*)$ /_tmp/$1 [NC,L]
+	
+	RewriteRule ^account/inbox/send/([^/]*)/?$ /account/inbox/send.php?username=$1 [L]
+	RewriteRule ^account/trades/?$ /account/trades/trades.php [L]
+	RewriteRule ^account/trades/send/([^/]*)/?$ /account/trades/send.php?username=$1 [L]
+	RewriteRule ^account/trades/view/([^/]*)/?$ /account/trades/view.php?id=$1 [L]
+	
+	RewriteRule ^clubs/club/([^/]*)/?$ /clubs/club.php?id=$1 [L]
+	RewriteRule ^clubs/club/([^/]*)/manage/?$ /clubs/manage.php?id=$1 [L]
+	
+	RewriteRule ^market/item/([^/]*)/?$ /market/item.php?id=$1 [L]
+	RewriteRule ^market/item/([^/]*)/edit/?$ /market/edit.php?id=$1 [L]
+	
+	RewriteRule ^profile/([^/]*)/?$ /users/profile.php?username=$1 [L]
+	RewriteRule ^profile/friends/([^/]*)/?$ /users/friends.php?username=$1 [L]
+	RewriteRule ^profile/clubs/([^/]*)/?$ /users/clubs.php?username=$1 [L]
+	
+	RewriteRule ^discussion/create/([^/]*)/?$ /discussion/create.php?id=$1 [L]
+	RewriteRule ^discussion/reply/([^/]*)/?$ /discussion/reply.php?id=$1 [L]
+	RewriteRule ^discussion/topic/([^/]*)/?$ /discussion/topic.php?id=$1 [L]
+	RewriteRule ^discussion/post/([^/]*)/?$ /discussion/post.php?id=$1 [L]
+	
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f    
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME}.php -f
+	RewriteRule ^(.+?)/?$ $1.php [L]
+</IfModule>

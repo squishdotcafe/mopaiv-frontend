@@ -1,0 +1,12 @@
+{
+	"name": "mopaiv-notifier",
+	"license": "MIT",
+	"author": "FoxxoSnoot",
+	"scripts": {
+		"start:dev": "node src/bot.js"
+	},
+	"dependencies": {
+		"discord.js": "^12.5.3",
+		"phin": "^3.6.0"
+	}
+}
