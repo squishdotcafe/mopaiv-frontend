@@ -1,9 +1,0 @@
-[
-	{
-		"server_name": "Mopaiv Notifier",
-		"webhook": {
-			"user_id": "",
-			"token": ""
-		}
-	}
-]
